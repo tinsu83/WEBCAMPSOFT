@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Submit Form</title>
+</head>
+<body>
+    <form method="post" action="submit.php" enctype="multipart/form-data">
+        <div id="food-items">
+            <div class="food-item">
+                <input type="text" name="food_data[0][food_name]" placeholder="Food Name" required>
+                <input type="number" name="food_data[0][food_price]" placeholder="Food Price" required>
+                <textarea name="food_data[0][food_description]" placeholder="Food Description" required></textarea>
+                <input type="text" name="food_data[0][food_category]" placeholder="Food Category" required>
+                <input type="text" name="food_data[0][hotel_name]" placeholder="Hotel Name" required>
+                <input type="file" name="food_image[]" required>
+            </div>
+        </div>
+        <button type="button" id="add-food-item">Add Food Item</button>
+        <button type="submit" name="add">Submit</button>
+    </form>
+
+    <script>
+        var foodItemsContainer = document.getElementById('food-items');
+        var addFoodItemButton = document.getElementById('add-food-item');
+        var foodItemIndex = 1;
+
+        addFoodItemButton.addEventListener('click', function () {
+            var foodItemDiv = document.createElement('div');
+            foodItemDiv.className = 'food-item';
+            foodItemDiv.innerHTML = `
+                <input type="text" name="food_data[${foodItemIndex}][food_name]" placeholder="Food Name" required>
+                <input type="number" name="food_data[${foodItemIndex}][food_price]" placeholder="Food Price" required>
+                <textarea name="food_data[${foodItemIndex}][food_description]" placeholder="Food Description" required></textarea>
+                <input type="text" name="food_data[${foodItemIndex}][food_category]" placeholder="Food Category" required>
+                <input type="text" name="food_data[${foodItemIndex}][hotel_name]" placeholder="Hotel Name" required>
+                <input type="file" name="food_image[]" required>
+            `;
+            foodItemsContainer.appendChild(foodItemDiv);
+            foodItemIndex++;
+        });
+    </script>
+</body>
+</html>

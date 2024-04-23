@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Form</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: rgb(125, 125, 243);
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            justify-content:space-between;
+            align-items: flex-start;
+            padding: 20px;
+        }
+
+        /* Styles for the delete button */
+        .delete-button {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .delete-button:hover {
+            background-color: #c0392b;
+        }
+
+        /* Styles for list items */
+        #selectedItemsList {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            width: calc(50% - 20px); /* Left side occupies 50% width */
+        }
+
+        #selectedItemsList li {
+            width: calc(30% - 20px); /* Each item occupies 50% of the container width */
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* Styles for total price and upload photo */
+        .form-container {
+            width: calc(30% - 20px); /* Right side occupies 50% width */
+            background-color: #f2f2f2;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        #totalPrice,
+        #photo,
+        #placeOrderBtn {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        #placeOrderBtn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        #placeOrderBtn:hover {
+            background-color: #2980b9;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Order Form</h1>
+
+    <div class="container">
+        <ul id="selectedItemsList"></ul>
+
+        <div class="form-container">
+            <form method="POST" action="order.php" enctype="multipart/form-data">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required><br>
+                
+                <label for="phoneNumber">Phone Number:</label>
+                <input type="tel" id="phoneNumber" name="phoneNumber" required><br>
+                
+                <label for="address">Address:</label>
+                <textarea id="address" name="address" required></textarea>
+                
+                <label for="totalPrice">Total Price:</label>
+                <input type="text" id="totalPrice" name="totalPrice" readonly>
+                
+                <label for="photo">Upload Photo:</label>
+                <input type="file" id="photo" name="photo" accept="image/*">
+                
+                <input type="submit" id="placeOrderBtn" value="Place Order">
+            </form>
+        </div>
+    </div>
+
+    <script>
+         var selectedItems = JSON.parse(localStorage.getItem('selectedItems')) || [];
+        var selectedItemsList = document.getElementById('selectedItemsList');
+
+        function deleteItem(index) {
+            selectedItems.splice(index, 1);
+            localStorage.setItem('selectedItems', JSON.stringify(selectedItems));
+            renderSelectedItems();
+        }
+
+        function renderSelectedItems() {
+            selectedItemsList.innerHTML = ''; // Clear the list
+            selectedItems.forEach(function(item, index) {
+                var listItem = document.createElement('li');
+                listItem.innerHTML = `<img src="${item.image}" alt="${item.name}">
+                                      <p>${item.name}</p>
+                                      <p>${item.price}</p>
+                                      <button class="delete-button" onclick="deleteItem(${index})">Delete</button>`;
+                selectedItemsList.appendChild(listItem);
+            });
+            updateTotalPriceDisplay();
+        }
+
+        renderSelectedItems();
+
+        function calculateTotalPrice() {
+            var total = 0;
+            selectedItems.forEach(function(item) {
+                var price = parseFloat(item.price.replace('Birr', ''));
+                if (!isNaN(price)) {
+                    total += price;
+                }
+            });
+            return total.toFixed(2);
+        }
+
+        function updateTotalPriceDisplay() {
+            var totalPriceElement = document.getElementById('totalPrice');
+            var totalPrice = calculateTotalPrice();
+            totalPriceElement.value = totalPrice + ' Birr';
+        }
+    </script>
+</body>
+</html>

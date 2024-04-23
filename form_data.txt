@@ -1,0 +1,84 @@
+Food Name: rerwes
+Food Image: WIN_20230922_11_37_23_Pro.jpg
+Food Price: 546
+Food Description: rfdcvxbhgfbvc
+Food Category: Breakfast
+Hotel Name: 
+
+Food Name: rerwes
+Food Image: WIN_20230922_11_37_23_Pro.jpg
+Food Price: 546
+Food Description: rfdcvxbhgfbvc
+Food Category: Breakfast
+Hotel Name: 
+
+Food Name: rerwes
+Food Image: WIN_20230922_11_37_23_Pro.jpg
+Food Price: 546
+Food Description: rfdcvxbhgfbvc
+Food Category: Breakfast
+Hotel Name: 
+
+Food Name: rerwes
+Food Image: WIN_20230922_11_37_23_Pro.jpg
+Food Price: 546
+Food Description: rfdcvxbhgfbvc
+Food Category: Breakfast
+Hotel Name: 
+
+Food Name: rerwes
+Food Image: WIN_20230922_11_37_23_Pro.jpg
+Food Price: 546
+Food Description: rfdcvxbhgfbvc
+Food Category: Breakfast
+Hotel Name: 
+
+Food Name: pasta
+Food Image: WIN_20230922_11_37_18_Pro.jpg
+Food Price: 23
+Food Description: wdfsdsvdc
+Food Category: Lunch
+Hotel Name: tinvc 
+
+Food Name: pasta
+Food Image: WIN_20230922_11_37_18_Pro.jpg
+Food Price: 23
+Food Description: wdfsdsvdc
+Food Category: Lunch
+Hotel Name: tinvc 
+
+Food Name: pasta
+Food Image: WIN_20230922_11_37_18_Pro.jpg
+Food Price: 23
+Food Description: urtgfv
+Food Category: Breakfast
+Hotel Name: tinvc 
+
+Food Name: pasta
+Food Image: WIN_20230922_11_39_25_Pro.jpg
+Food Price: 23
+Food Description: retr4eyt
+Food Category: Lunch
+Hotel Name: tinvc 
+
+Food Name: pasta
+Food Image: WIN_20230922_11_39_25_Pro.jpg
+Food Price: 23
+Food Description: rtvhcx
+Food Category: Breakfast
+Hotel Name: tinvc 
+
+Food Name: burger
+Food Image: WIN_20230922_11_37_23_Pro.jpg
+Food Price: 234
+Food Description: fegyvbjhgbdscvhdsgkfh
+Food Category: Dinner
+Hotel Name: gena
+
+Food Name: burger
+Food Image: WIN_20230922_11_37_23_Pro.jpg
+Food Price: 234
+Food Description: fghdfv
+Food Category: Breakfast
+Hotel Name: gena
+

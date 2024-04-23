@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Select2-like Functionality</title>
+    <style>
+        .select2-container {
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <select id="mySelect">
+        <option value="option1">Option 1</option>
+        <option value="option2">Option 2</option>
+        <option value="option3">Option 3</option>
+    </select>
+
+    <script>
+        // Custom select functionality
+        var select = document.getElementById('mySelect');
+        select.style.display = 'none'; // Hide the original select element
+
+        var selectContainer = document.createElement('div');
+        selectContainer.classList.add('select2-container');
+        selectContainer.style.position = 'relative';
+        selectContainer.style.display = 'inline-block';
+
+        var selectText = document.createElement('div');
+        selectText.classList.add('select2-selection');
+        selectText.style.border = '1px solid #ccc';
+        selectText.style.padding = '5px';
+        selectText.style.cursor = 'pointer';
+        selectText.textContent = 'Select an option';
+        selectContainer.appendChild(selectText);
+
+        var selectDropdown = document.createElement('div');
+        selectDropdown.classList.add('select2-dropdown');
+        selectDropdown.style.position = 'absolute';
+        selectDropdown.style.top = '100%';
+        selectDropdown.style.left = '0';
+        selectDropdown.style.display = 'none';
+
+        var options = Array.from(select.options);
+        options.forEach(function(option) {
+            var selectOption = document.createElement('div');
+            selectOption.classList.add('select2-option');
+            selectOption.style.padding = '5px';
+            selectOption.textContent = option.textContent;
+            selectOption.addEventListener('click', function() {
+                select.value = option.value;
+                selectText.textContent = option.textContent;
+                selectDropdown.style.display = 'none';
+            });
+            selectDropdown.appendChild(selectOption);
+        });
+
+        selectContainer.appendChild(selectDropdown);
+        document.body.appendChild(selectContainer);
+
+        selectText.addEventListener('click', function() {
+            if (selectDropdown.style.display === 'none') {
+                selectDropdown.style.display = 'block';
+            } else {
+                selectDropdown.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

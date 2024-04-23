@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Registration Form</title>
+    <style>
+        /* CSS styles */
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+        }
+
+        .form-group select {
+            width: 100%;
+            padding: 8px;
+        }
+
+        .form-group textarea {
+            height: 80px;
+        }
+
+        .form-group button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Event Registration Form</h2>
+        <form id="eventForm" method="POST" action="event_registration.php">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" name="name" id="name" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number:</label>
+                <input type="text" name="phone" id="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <textarea name="address" id="address" maxlength="30" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="event_type">Event Type:</label>
+                <select name="event_type" id="event_type" required>
+                    <option value="">Select Event Type</option>
+                    <option value="Wedding">Wedding</option>
+                    <option value="Birthday">Birthday</option>
+                    <option value="Corporate">Corporate</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="attendees">Number of Attendees:</label>
+                <input type="number" name="attendees" id="attendees" required>
+            </div>
+            <div class="form-group">
+                <label for="duration">Event Duration (in hours):</label>
+                <input type="number" name="duration" id="duration" required>
+            </div>
+            <div class="form-group">
+                <label for="service_type">Service Type:</label>
+                <select name="service_type" id="service_type" required>
+                    <option value="">Select Service Type</option>
+                    <option value="lunch">Lunch</option>
+                    <option value="break_fast">Breakfast</option>
+                    <option value="dinner">Dinner</option>
+                    <option value="cocktail">Cocktail</option>
+                    <option value="buffet">Buffet</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        // JavaScript code to handle form submission
+        document.getElementById('eventForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            var xhr = new XMLHttpRequest();
+            var formData = new FormData(event.target);
+
+            xhr.open('POST', 'event_registration.php', true);
+            xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        var response = JSON.parse(xhr.responseText);
+                        alert(response.message);
+                    } else {
+                        alert('Error: ' + xhr.status);
+                    }
+                }
+            };
+
+            xhr.send(formData);
+        });
+    </script>
+</body>
+</html>

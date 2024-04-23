@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Page</title>
+    <style>
+        .restaurant-list {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .restaurant-list a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .restaurant-list a:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+    <div class="restaurant-list">
+        <a href="vectorys.html" data-value="victory-hotel" data-location="New York" data-rating="4">VICTORY HOTEL</a>
+        <a href="SHEMBELALAMENU.html" data-value="shembelala" data-location="Paris" data-rating="5">SHEMBELALA</a>
+        <a href="LEMU_MENU.html" data-value="lemu-hotel" data-location="Tokyo" data-rating="3">LEMU HOTEL</a>
+        <a href="ADILA.html" data-value="shembelala" data-location="Paris" data-rating="5">ADILA</a>
+        <a href="ASHAM.html" data-value="lemu-hotel" data-location="Tokyo" data-rating="3">ASHAM HOTEL</a>
+        <a id="add1" href="hotel_display.php" data-value="added hotel name" location="added location">added hotelname</a>
+    </div>
+</body>
+</html>
